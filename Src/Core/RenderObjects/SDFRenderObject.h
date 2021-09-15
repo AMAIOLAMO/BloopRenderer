@@ -11,7 +11,7 @@ namespace Bloop
 	{
 	public:
 		SDFRenderObject();
-		SDFRenderObject(const Float3& position);
+		SDFRenderObject(const Float3& position, const Material& material);
 
 	public:
 		virtual float GetDistance(const Float3& point) const = 0;

@@ -7,11 +7,15 @@
 #include "Core/SceneRenderer/SceneRenderer.h"
 
 #include "../Vendor/Plugins/Bitmap/bitmap_image.hpp"
+#include "../Vendor/Plugins/CXUtils/Diagnostics/Stopwatch.h"
 
 int main()
 {
 	using namespace Bloop;
 	using namespace CXUtils;
+
+	Stopwatch sw;
+
 
 	UInt2 imgDimension(100, 100);
 
@@ -27,10 +31,11 @@ int main()
 
 #define MKRenderObject(type) std::make_shared<type>()
 
-	scene.Add(std::make_shared<SphereRenderObject>(Float3(0, 0, 0), 1.f));
+	scene.Add(std::make_shared<SphereRenderObject>(Float3(0, 0, 0), Material(), 1.f));
 
 
 #pragma region Render
+	sw.Start();
 
 	for (size_t x = 0; x < imgDimension.x; x++)
 	{
@@ -45,14 +50,18 @@ int main()
 		}
 	}
 
+	std::cout << "Render elapsed time: " << sw.Stop().count() << std::endl;
+
 #pragma endregion
 
 
 #pragma region Export | Save
 
+	std::cout << "Saving...\n";
+
 	std::filesystem::path path = std::filesystem::current_path();
 
-	path.append("Renderers/Result.bmp");
+	path.append("Result.bmp");
 
 	resultImg.save_image(path.string());
 

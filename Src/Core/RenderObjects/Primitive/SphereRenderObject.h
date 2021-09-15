@@ -11,7 +11,7 @@ namespace Bloop
 		float _radius;
 
 	public:
-		SphereRenderObject(const Float3& position, const float& radius);
+		SphereRenderObject(const Float3& position, const Material& material, const float& radius);
 
 	public:
 		virtual float GetDistance(const Float3& point) const override;

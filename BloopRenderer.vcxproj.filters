@@ -48,6 +48,9 @@
     <ClCompile Include="Src\Core\RenderProfile\RenderProfile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Core\Material\Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vendor\Plugins\Bitmap\bitmap_image.hpp">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Core\RenderProfile\RenderProfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Material\Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
