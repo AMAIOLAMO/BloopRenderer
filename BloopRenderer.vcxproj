@@ -19,20 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Vendor\Plugins\CXUtils\Color\Color8.cpp" />
     <ClCompile Include="Src\Core\RenderObjects\Primitive\SphereRenderObject.cpp" />
     <ClCompile Include="Src\Core\Camera\Camera.cpp" />
     <ClCompile Include="Src\Core\RenderObjects\RenderObject.cpp" />
+    <ClCompile Include="Src\Core\RenderObjects\SDFRenderObject.cpp" />
     <ClCompile Include="Vendor\Plugins\CXUtils\Diagnostics\Logger.cpp" />
     <ClCompile Include="Src\Core\Scene.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Vendor\Plugins\CXUtils\Diagnostics\Stopwatch.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Vendor\Plugins\CXUtils\Color\Color8.h" />
+    <ClInclude Include="Src\Core\RenderObjects\SDFRenderObject.h" />
     <ClInclude Include="Src\Core\RenderObjects\Primitive\SphereRenderObject.h" />
     <ClInclude Include="Src\Core\Camera\Camera.h" />
     <ClInclude Include="Src\Core\RenderObjects\RenderObject.h" />
     <ClInclude Include="Vendor\Plugins\CXUtils\Diagnostics\Logger.h" />
     <ClInclude Include="Src\Core\Scene.h" />
+    <ClInclude Include="Vendor\Plugins\CXUtils\Utils\CommonTypeDef.h" />
     <ClInclude Include="Vendor\Plugins\CXUtils\Vectors\Type3.h" />
     <ClInclude Include="Vendor\Plugins\CXUtils\Vectors\Type2.h" />
     <ClInclude Include="Vendor\Plugins\CXUtils\Diagnostics\Stopwatch.h" />

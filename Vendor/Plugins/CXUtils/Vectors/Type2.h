@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Utils/CommonTypeDef.h"
+
 #include <cmath>
 
 namespace CXUtils
@@ -13,11 +15,17 @@ namespace CXUtils
 	public:
 		Type2(const Type& x, const Type& y) : x(x), y(y) { }
 		template<typename ConvertingType>
-		Type2(Type2<ConvertingType> from) : x(static_cast<Type>(from.x)), y(static_cast<Type>(from.y)) {  }
+		Type2(const Type2<ConvertingType>& from) : x(static_cast<Type>(from.x)), y(static_cast<Type>(from.y)) {  }
 
-		Type SqrMagnitude() { return x * x + y * y; }
+		Type SqrMagnitude() const { return x * x + y * y; }
 
-		Type Magnitude() { return sqrt(SqrMagnitude()); }
+		Type Magnitude() const { return sqrt(SqrMagnitude()); }
+
+		Type3<Type> Normalized() const
+		{
+			float magnitude = Magnitude();
+			return magnitude == 0.f ? Type3<Type>(0, 0, 0) : (*this) / magnitude;
+		}
 
 		Type Dot(const Type2<Type>& other) { return x * other.x + y * other.y; }
 
@@ -42,6 +50,7 @@ namespace CXUtils
 
 	typedef Type2<float>        Float2;
 	typedef Type2<unsigned int> UInt2;
+	typedef Type2<byte>         Byte2;
 	typedef Type2<int>          Int2;
 	typedef Type2<double>       Double2;
 

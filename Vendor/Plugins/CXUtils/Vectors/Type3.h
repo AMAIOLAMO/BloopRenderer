@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Utils/CommonTypeDef.h"
+
 #include <cmath>
 
 namespace CXUtils
@@ -13,15 +15,15 @@ namespace CXUtils
 	public:
 		Type3(const Type& x, const Type& y, const Type& z) : x(x), y(y), z(z) { }
 		template<typename ConvertingType>
-		Type3(Type3<ConvertingType> from) : x(static_cast<Type>(from.x)), y(static_cast<Type>(from.y)), z(static_cast<Type>(from.z)) {}
+		Type3(const Type3<ConvertingType>& from) : x(static_cast<Type>(from.x)), y(static_cast<Type>(from.y)), z(static_cast<Type>(from.z)) {}
 
-		Type SqrMagnitude() { return x * x + y * y + z * z; }
+		Type SqrMagnitude() const { return x * x + y * y + z * z; }
 
-		Type Magnitude() { return sqrt(SqrMagnitude()); }
+		Type Magnitude() const { return sqrt(SqrMagnitude()); }
 
-		Type Dot(const Type3& other) { return x * other.x + y * other.y + z * other.z; }
+		Type Dot(const Type3& other) const { return x * other.x + y * other.y + z * other.z; }
 
-		Type3<Type> Normalized()
+		Type3<Type> Normalized() const
 		{
 			float magnitude = Magnitude();
 			return magnitude == 0.f ? Type3<Type>(0, 0, 0) : (*this) / magnitude;
@@ -48,10 +50,11 @@ namespace CXUtils
 
 #pragma region TypeDef
 
-	typedef Type3<float>        Float3;
-	typedef Type3<unsigned int> UInt3;
-	typedef Type3<int>          Int3;
-	typedef Type3<double>       Double3;
+	typedef Type3<float>         Float3;
+	typedef Type3<unsigned int>  UInt3;
+	typedef Type3<byte>			 Byte3;
+	typedef Type3<int>           Int3;
+	typedef Type3<double>        Double3;
 
 #pragma endregion
 }

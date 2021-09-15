@@ -36,6 +36,12 @@
     <ClCompile Include="Src\Core\RenderObjects\Primitive\SphereRenderObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Core\RenderObjects\SDFRenderObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vendor\Plugins\CXUtils\Color\Color8.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vendor\Plugins\Bitmap\bitmap_image.hpp">
@@ -63,6 +69,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Core\RenderObjects\Primitive\SphereRenderObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\RenderObjects\SDFRenderObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\Plugins\CXUtils\Color\Color8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vendor\Plugins\CXUtils\Utils\CommonTypeDef.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

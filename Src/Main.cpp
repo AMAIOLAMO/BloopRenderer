@@ -14,5 +14,5 @@ int main()
 
 #define MKRenderObject(type) std::make_shared<type>()
 
-	scene.Add(MKRenderObject(SphereRenderObject));
+	scene.Add(std::make_shared<SphereRenderObject>(Float3(0, 0, 0), 1.f));
 }
