@@ -2,15 +2,17 @@
 #include <thread>
 #include <filesystem>
 
-#include "../Vendor/Plugins/Bitmap/bitmap_image.hpp"
-
 #include "Core/Scene.h"
+#include "Core/RenderObjects/Primitive/SphereRenderObject.h"
 
 int main()
 {
-	bitmap_image resultImg(1920, 1080);
+	using namespace Bloop;
+	using namespace CXUtils;
 
-	Bloop::Scene scene;
+	Scene scene;
 
-	resultImg.save_image("C:\\Users\\alienware\\Desktop\\Work\\test.bmp");
+#define MKRenderObject(type) std::make_shared<type>()
+
+	scene.Add(MKRenderObject(SphereRenderObject));
 }

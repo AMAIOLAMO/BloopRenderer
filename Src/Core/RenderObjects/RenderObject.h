@@ -1,17 +1,17 @@
 #pragma once
 
-#include "../Types/Type3.h"
+#include "../../../Vendor/Plugins/CXUtils/Vectors/Type3.h"
 
 namespace Bloop
 {
 	using namespace CXUtils;
 
 	/// <summary>
-	///		an object where could be renderered in scene
+	///		an object which could be renderered in scene
 	/// </summary>
 	class RenderObject
 	{
-	private:
+	protected:
 		Float3 _position;
 
 	public:

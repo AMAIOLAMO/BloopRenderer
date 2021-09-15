@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Types/Type3.h"
+#include "../../../Vendor/Plugins/CXUtils/Vectors/Type3.h"
 
 namespace Bloop
 {

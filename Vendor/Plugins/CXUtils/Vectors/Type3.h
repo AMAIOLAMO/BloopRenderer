@@ -27,21 +27,23 @@ namespace CXUtils
 			return magnitude == 0.f ? Type3<Type>(0, 0, 0) : (*this) / magnitude;
 		}
 
-		Type3<Type> operator+(const Type3<Type>& other) { return Type3(x + other.x, y + other.y, z + other.z); }
-		Type3<Type> operator-(const Type3<Type>& other) { return Type3(x - other.x, y - other.y, z - other.z); }
+	public:
 
-		Type3<Type> operator*(const Type value) { return Type3(x * value, y * value, z * value); }
-		Type3<Type> operator/(const Type value) { return Type3(x / value, y / value, z / value); }
+		Type3<Type> operator+(const Type3<Type>& other) const { return Type3<Type>(x + other.x, y + other.y, z + other.z); }
+		Type3<Type> operator-(const Type3<Type>& other) const { return Type3<Type>(x - other.x, y - other.y, z - other.z); }
+
+		Type3<Type> operator*(const Type& value) const { return Type3<Type>(x * value, y * value, z * value); }
+		Type3<Type> operator/(const Type& value) const { return Type3<Type>(x / value, y / value, z / value); }
 
 		/// <summary>
 		///		Element-wise product
 		/// </summary>
-		Type3<Type> operator*(const Type3<Type>& other) { return Type3(x * other.x, y * other.y, z * other.z); }
+		Type3<Type> operator*(const Type3<Type>& other) const { return Type3<Type>(x * other.x, y * other.y, z * other.z); }
 
 		/// <summary>
 		///		Element-wise division
 		/// </summary>
-		Type3<Type> operator/(const Type3<Type>& other) { return Type3(x / other.x, y / other.y, z / other.z); }
+		Type3<Type> operator/(const Type3<Type>& other) const { return Type3<Type>(x / other.x, y / other.y, z / other.z); }
 	};
 
 #pragma region TypeDef

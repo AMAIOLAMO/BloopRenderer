@@ -24,8 +24,8 @@ namespace CXUtils
 		Type2<Type> operator+(const Type2<Type>& other) { return Type2<Type>(x + other.x, y + other.y); }
 		Type2<Type> operator-(const Type2<Type>& other) { return Type2<Type>(x - other.x, y - other.y); }
 
-		Type2<Type> operator*(const Type value) { return Type2<Type>(x * value, y * value); }
-		Type2<Type> operator/(const Type value) { return Type2<Type>(x / value, y / value); }
+		Type2<Type> operator*(const Type& value) { return Type2<Type>(x * value, y * value); }
+		Type2<Type> operator/(const Type& value) { return Type2<Type>(x / value, y / value); }
 
 		/// <summary>
 		///		Element-wise product

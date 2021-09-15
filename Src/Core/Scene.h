@@ -25,7 +25,7 @@ namespace Bloop
 		///		Adds a SceneObject to the scene <br/>
 		///		Note that you will lose the pointer reference when adding into the scene
 		/// </summary>
-		void Add(const std::shared_ptr<RenderObject>& renderObject);
+		Scene& Add(const std::shared_ptr<RenderObject>& renderObject);
 	};
 }
 

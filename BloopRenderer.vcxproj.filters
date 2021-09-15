@@ -33,6 +33,9 @@
     <ClCompile Include="Src\Core\Camera\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Core\RenderObjects\Primitive\SphereRenderObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vendor\Plugins\Bitmap\bitmap_image.hpp">
@@ -41,10 +44,10 @@
     <ClInclude Include="Vendor\Plugins\CXUtils\Diagnostics\Stopwatch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Core\Types\Type2.h">
+    <ClInclude Include="Vendor\Plugins\CXUtils\Vectors\Type2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Core\Types\Type3.h">
+    <ClInclude Include="Vendor\Plugins\CXUtils\Vectors\Type3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Core\Scene.h">
@@ -57,6 +60,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Core\Camera\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\RenderObjects\Primitive\SphereRenderObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
