@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Core\RenderProfile\RenderProfile.cpp" />
+    <ClCompile Include="Src\Core\SceneRenderer\SceneRenderer.cpp" />
     <ClCompile Include="Vendor\Plugins\CXUtils\Color\Color8.cpp" />
     <ClCompile Include="Src\Core\RenderObjects\Primitive\SphereRenderObject.cpp" />
     <ClCompile Include="Src\Core\Camera\Camera.cpp" />
@@ -30,6 +32,8 @@
     <ClCompile Include="Vendor\Plugins\CXUtils\Diagnostics\Stopwatch.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Core\RenderProfile\RenderProfile.h" />
+    <ClInclude Include="Src\Core\SceneRenderer\SceneRenderer.h" />
     <ClInclude Include="Vendor\Plugins\CXUtils\Color\Color8.h" />
     <ClInclude Include="Src\Core\RenderObjects\SDFRenderObject.h" />
     <ClInclude Include="Src\Core\RenderObjects\Primitive\SphereRenderObject.h" />

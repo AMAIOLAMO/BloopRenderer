@@ -1,6 +1,10 @@
 #pragma once
 
+#include "../Scene.h"
+#include "../Camera/Camera.h"
 #include "../RenderProfile/RenderProfile.h"
+#include "../../../Vendor/Plugins/CXUtils/Color/Color8.h"
+#include "../../../Vendor/Plugins/CXUtils/Vectors/Type2.h"
 
 namespace Bloop
 {
@@ -10,10 +14,12 @@ namespace Bloop
 	class SceneRenderer
 	{
 	private:
-		const RenderProfile& _renderProfile;
+		const RenderProfile _renderProfile;
 
 	public:
 		SceneRenderer(const RenderProfile& renderProfile);
+
+		Color8 RenderPixel(const Camera& camera, const Scene& scene, const Float2& uv);
 	};
 }
 

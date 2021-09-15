@@ -42,6 +42,12 @@
     <ClCompile Include="Vendor\Plugins\CXUtils\Color\Color8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Core\SceneRenderer\SceneRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Core\RenderProfile\RenderProfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vendor\Plugins\Bitmap\bitmap_image.hpp">
@@ -78,6 +84,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vendor\Plugins\CXUtils\Utils\CommonTypeDef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\SceneRenderer\SceneRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\RenderProfile\RenderProfile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

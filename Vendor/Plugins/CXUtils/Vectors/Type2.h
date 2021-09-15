@@ -10,7 +10,7 @@ namespace CXUtils
 	struct Type2
 	{
 	public:
-		const Type& x, y;
+		const Type x, y;
 
 	public:
 		Type2(const Type& x, const Type& y) : x(x), y(y) { }
@@ -21,10 +21,10 @@ namespace CXUtils
 
 		Type Magnitude() const { return sqrt(SqrMagnitude()); }
 
-		Type3<Type> Normalized() const
+		Type2<Type> Normalized() const
 		{
 			float magnitude = Magnitude();
-			return magnitude == 0.f ? Type3<Type>(0, 0, 0) : (*this) / magnitude;
+			return magnitude == 0.f ? Type2<Type>(0, 0) : (*this) / magnitude;
 		}
 
 		Type Dot(const Type2<Type>& other) { return x * other.x + y * other.y; }

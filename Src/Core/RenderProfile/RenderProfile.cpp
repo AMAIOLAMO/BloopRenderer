@@ -2,7 +2,4 @@
 
 using namespace Bloop;
 
-RenderProfile::RenderProfile()
-{
-	//TODO: RenderProfile stuff
-}
+RenderProfile::RenderProfile(const UInt2& dimension) : Dimension(dimension) {}

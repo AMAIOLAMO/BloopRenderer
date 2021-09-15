@@ -17,6 +17,11 @@ namespace CXUtils
 				byte r, g, b;
 			};
 
+			struct
+			{
+				byte red, green, blue;
+			};
+
 			Byte3 byte3;
 		};
 		
