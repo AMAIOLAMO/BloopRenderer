@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include "../../../Vendor/Plugins/CXUtils/Vectors/Type3.h"
 #include "../Material/Material.h"
 
@@ -14,11 +16,11 @@ namespace Bloop
 	{
 	protected:
 		Float3 _position;
-		Material _material;
+		Material* _material;
 
 	public:
-		RenderObject();
-		RenderObject(const Float3& position, const Material& material);
+		RenderObject(const Float3& position, Material* material);
+		~RenderObject();
 	};
 }
 

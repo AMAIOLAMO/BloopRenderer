@@ -1,13 +1,20 @@
 #pragma once
+
+#include "../../../Vendor/Plugins/CXUtils/Color/Color8.h"
+
 namespace Bloop
 {
+	using namespace CXUtils;
+
+	class Scene;
+
 	/// <summary>
 	///		A class that stores all the required information for a material
 	/// </summary>
-	struct Material
+	class Material
 	{
 	public:
-		Material();
+		virtual Color8 RenderPixel(const Scene& scene) const = 0;
 	};
 }
 

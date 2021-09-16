@@ -4,12 +4,14 @@
 #include <iostream>
 #include <memory>
 
+#include "Ray/Ray.h"
 #include "RenderObjects/RenderObject.h"
+#include "Ray/RayCastInfo.h"
 
 namespace Bloop
 {
 	/// <summary>
-	///		The main entry of a scene
+	///		Where every RenderObject is stored
 	/// </summary>
 	class Scene
 	{
@@ -22,10 +24,10 @@ namespace Bloop
 
 	public:
 		/// <summary>
-		///		Adds a SceneObject to the scene <br/>
-		///		Note that you will lose the pointer reference when adding into the scene
+		///		Adds a SceneObject into the scene
 		/// </summary>
 		Scene& Add(const std::shared_ptr<RenderObject>& renderObject);
+		RayCastInfo RayCast(const Ray& ray) const;
 	};
 }
 

@@ -9,13 +9,14 @@
 #include "../Vendor/Plugins/Bitmap/bitmap_image.hpp"
 #include "../Vendor/Plugins/CXUtils/Diagnostics/Stopwatch.h"
 
+#include "Core/Material/Primitive/ColorMaterial.h"
+
 int main()
 {
 	using namespace Bloop;
 	using namespace CXUtils;
 
 	Stopwatch sw;
-
 
 	UInt2 imgDimension(100, 100);
 
@@ -29,9 +30,7 @@ int main()
 
 	Camera camera(Float3(0, 0, 0), Float3(0, 0, 1));
 
-#define MKRenderObject(type) std::make_shared<type>()
-
-	scene.Add(std::make_shared<SphereRenderObject>(Float3(0, 0, 0), Material(), 1.f));
+	scene.Add(std::make_shared<SphereRenderObject>(Float3(0, 0, 0), new ColorMaterial(Color8(255, 0, 0)), 1.f));
 
 
 #pragma region Render
@@ -55,6 +54,8 @@ int main()
 #pragma endregion
 
 
+
+
 #pragma region Export | Save
 
 	std::cout << "Saving...\n";
@@ -68,6 +69,4 @@ int main()
 	std::cout << "Saved img to path: " << path.string() << std::endl;
 
 #pragma endregion
-
-
 }

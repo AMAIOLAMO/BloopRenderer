@@ -19,7 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Core\Material\Material.cpp" />
+    <ClCompile Include="Src\Core\Material\Primitive\ColorMaterial.cpp" />
+    <ClCompile Include="Src\Core\Ray\Ray.cpp" />
+    <ClCompile Include="Src\Core\Ray\RayCastInfo.cpp" />
     <ClCompile Include="Src\Core\RenderProfile\RenderProfile.cpp" />
     <ClCompile Include="Src\Core\SceneRenderer\SceneRenderer.cpp" />
     <ClCompile Include="Vendor\Plugins\CXUtils\Color\Color8.cpp" />
@@ -33,6 +35,9 @@
     <ClCompile Include="Vendor\Plugins\CXUtils\Diagnostics\Stopwatch.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Core\Material\Primitive\ColorMaterial.h" />
+    <ClInclude Include="Src\Core\Ray\Ray.h" />
+    <ClInclude Include="Src\Core\Ray\RayCastInfo.h" />
     <ClInclude Include="Src\Core\Material\Material.h" />
     <ClInclude Include="Src\Core\RenderProfile\RenderProfile.h" />
     <ClInclude Include="Src\Core\SceneRenderer\SceneRenderer.h" />
