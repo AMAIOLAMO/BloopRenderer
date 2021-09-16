@@ -5,7 +5,6 @@
 #include <memory>
 
 #include "Ray/Ray.h"
-#include "RenderObjects/RenderObject.h"
 #include "Ray/RayCastInfo.h"
 
 namespace Bloop
@@ -13,22 +12,29 @@ namespace Bloop
 	/// <summary>
 	///		Where every RenderObject is stored
 	/// </summary>
+	template<typename T>
 	class Scene
 	{
-	private:
-		std::vector<std::shared_ptr<RenderObject>> _renderObjects;
+	protected:
+		std::vector<std::shared_ptr<T>> renderObjects;
 
-	public:
-		Scene();
-		~Scene();
+	protected:
+		Scene() : renderObjects() { }
+		virtual ~Scene() { }
 
 	public:
 		/// <summary>
 		///		Adds a SceneObject into the scene
 		/// </summary>
-		Scene& Add(const std::shared_ptr<RenderObject>& renderObject);
-		RayCastInfo RayCast(const Ray& ray) const;
+		Scene& Add(const std::shared_ptr<T>& renderObject)
+		{
+			renderObjects.push_back(renderObject);
+			return (*this);
+		}
+
+		virtual RayCastInfo RayCast(const Ray& ray) const = 0;
 	};
 }
+
 
 

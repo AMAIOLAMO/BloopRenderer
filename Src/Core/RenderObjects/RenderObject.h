@@ -21,6 +21,9 @@ namespace Bloop
 	public:
 		RenderObject(const Float3& position, Material* material);
 		~RenderObject();
+
+		const Float3& GetPosition() const;
+		const Material& GetMaterial() const;
 	};
 }
 

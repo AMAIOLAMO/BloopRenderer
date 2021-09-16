@@ -6,15 +6,13 @@ namespace Bloop
 {
 	using namespace CXUtils;
 
-	class Scene;
-
 	/// <summary>
 	///		A class that stores all the required information for a material
 	/// </summary>
 	class Material
 	{
 	public:
-		virtual Color8 RenderPixel(const Scene& scene) const = 0;
+		virtual Color8 RenderPixel() const = 0;
 	};
 }
 

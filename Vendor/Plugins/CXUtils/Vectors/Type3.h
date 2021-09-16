@@ -10,7 +10,7 @@ namespace CXUtils
 	struct Type3
 	{
 	public:
-		const Type x, y, z;
+		Type x, y, z;
 
 	public:
 		Type3(const Type& x, const Type& y, const Type& z) : x(x), y(y), z(z) { }

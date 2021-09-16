@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../Scene.h"
 #include "../Camera/Camera.h"
 #include "../RenderProfile/RenderProfile.h"
 #include "../../../Vendor/Plugins/CXUtils/Color/Color8.h"
@@ -11,15 +10,16 @@ namespace Bloop
 	/// <summary>
 	///		A factory used for renderering a scene
 	/// </summary>
+	template<typename T>
 	class SceneRenderer
 	{
-	private:
-		const RenderProfile _renderProfile;
+	protected:
+		const RenderProfile renderProfile;
 
-	public:
-		SceneRenderer(const RenderProfile& renderProfile);
+	protected:
+		SceneRenderer(const RenderProfile& renderProfile) : renderProfile(renderProfile) {}
 
-		Color8 RenderPixel(const Camera& camera, const Scene& scene, const Float2& uv);
+		virtual Color8 RenderPixel(const Camera& camera, const T& scene, const Float2& uv) const = 0;
 	};
 }
 

@@ -19,22 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Core\SceneRenderer\SDFSceneRenderer.cpp" />
+    <ClCompile Include="Src\Core\Scenes\SDFScene.cpp" />
     <ClCompile Include="Src\Core\Material\Primitive\ColorMaterial.cpp" />
     <ClCompile Include="Src\Core\Ray\Ray.cpp" />
     <ClCompile Include="Src\Core\Ray\RayCastInfo.cpp" />
     <ClCompile Include="Src\Core\RenderProfile\RenderProfile.cpp" />
-    <ClCompile Include="Src\Core\SceneRenderer\SceneRenderer.cpp" />
     <ClCompile Include="Vendor\Plugins\CXUtils\Color\Color8.cpp" />
     <ClCompile Include="Src\Core\RenderObjects\Primitive\SphereRenderObject.cpp" />
     <ClCompile Include="Src\Core\Camera\Camera.cpp" />
     <ClCompile Include="Src\Core\RenderObjects\RenderObject.cpp" />
     <ClCompile Include="Src\Core\RenderObjects\SDFRenderObject.cpp" />
     <ClCompile Include="Vendor\Plugins\CXUtils\Diagnostics\Logger.cpp" />
-    <ClCompile Include="Src\Core\Scene.cpp" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Vendor\Plugins\CXUtils\Diagnostics\Stopwatch.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Core\SceneRenderer\SDFSceneRenderer.h" />
+    <ClInclude Include="Src\Core\Scenes\SDFScene.h" />
     <ClInclude Include="Src\Core\Material\Primitive\ColorMaterial.h" />
     <ClInclude Include="Src\Core\Ray\Ray.h" />
     <ClInclude Include="Src\Core\Ray\RayCastInfo.h" />
@@ -125,6 +127,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,6 +143,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

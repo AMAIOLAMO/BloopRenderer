@@ -16,7 +16,7 @@ namespace Bloop
 		ColorMaterial(const Color8& color);
 
 	public:
-		virtual Color8 RenderPixel(const Scene& scene) const override;
+		virtual Color8 RenderPixel() const override;
 	};
 }
 

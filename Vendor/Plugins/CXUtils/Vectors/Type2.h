@@ -10,7 +10,7 @@ namespace CXUtils
 	struct Type2
 	{
 	public:
-		const Type x, y;
+		Type x, y;
 
 	public:
 		Type2(const Type& x, const Type& y) : x(x), y(y) { }
