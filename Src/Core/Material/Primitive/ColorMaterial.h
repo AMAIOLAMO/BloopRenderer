@@ -5,18 +5,15 @@
 namespace Bloop
 {
 	/// <summary>
-	///		A basic material that is plain
+	///		A basic material that has a color
 	/// </summary>
 	class ColorMaterial : public Material
 	{
 	protected:
-		Color8 _color;
+		Color8 color;
 
 	public:
 		ColorMaterial(const Color8& color);
-
-	public:
-		virtual Color8 RenderPixel() const override;
 	};
 }
 

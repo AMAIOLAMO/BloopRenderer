@@ -4,7 +4,7 @@ using namespace Bloop;
 
 SDFSceneRenderer::SDFSceneRenderer(const RenderProfile& renderProfile) : SceneRenderer(renderProfile) {}
 
-Color8 SDFSceneRenderer::RenderPixel(const Camera& camera, const SDFScene& scene, const Float2& uv) const
+Color8 SDFSceneRenderer::RenderFragment(const Camera& camera, const SDFScene& scene, const Float2& uv) const
 {
 	const float dimensionRate = (float)renderProfile.Dimension.y / renderProfile.Dimension.x;
 
@@ -19,5 +19,5 @@ Color8 SDFSceneRenderer::RenderPixel(const Camera& camera, const SDFScene& scene
 	if (info.DidntHit()) return Color8(0, 0, 0);
 	//else hit
 
-	return info.renderObject->GetMaterial().RenderPixel();
+	return info.renderObject->GetMaterial().RenderFragment();
 }

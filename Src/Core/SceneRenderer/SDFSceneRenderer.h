@@ -13,7 +13,7 @@ namespace Bloop
 		SDFSceneRenderer(const RenderProfile& renderProfile);
 
 		// Inherited via SceneRenderer
-		virtual Color8 RenderPixel(const Camera& camera, const SDFScene& scene, const Float2& uv) const;
+		virtual Color8 RenderFragment(const Camera& camera, const SDFScene& scene, const Float2& uv) const;
 	};
 }
 

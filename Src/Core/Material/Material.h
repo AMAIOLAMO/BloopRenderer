@@ -12,7 +12,7 @@ namespace Bloop
 	class Material
 	{
 	public:
-		virtual Color8 RenderPixel() const = 0;
+		virtual Color8 RenderFragment() const = 0;
 	};
 }
 

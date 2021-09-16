@@ -9,7 +9,7 @@
 #include "../Vendor/Plugins/Bitmap/bitmap_image.hpp"
 #include "../Vendor/Plugins/CXUtils/Diagnostics/Stopwatch.h"
 
-#include "Core/Material/Primitive/ColorMaterial.h"
+#include "Core/Material/Primitive/PlainMaterial.h"
 #include "Core/Scenes/SDFScene.h"
 #include "Core/RenderObjects/Primitive/PlaneRenderObject.h"
 
@@ -35,7 +35,7 @@ int main()
 	scene
 		.Add(std::make_shared<SphereRenderObject>(
 			Float3(0, 0, 5),
-			new ColorMaterial(Color8(0, 255, 0)),
+			new PlainMaterial(Color8(0, 255, 0)),
 			1.f)
 		);
 
@@ -48,7 +48,7 @@ int main()
 		for (size_t y = 0; y < imgDimension.y; y++)
 		{
 			resultImg.set_pixel(x, y,
-				renderer.RenderPixel(
+				renderer.RenderFragment(
 					camera, scene,
 					Float2((float)x / imgDimension.x, (float)y / imgDimension.y)
 				)

@@ -19,7 +19,7 @@ namespace Bloop
 	protected:
 		SceneRenderer(const RenderProfile& renderProfile) : renderProfile(renderProfile) {}
 
-		virtual Color8 RenderPixel(const Camera& camera, const T& scene, const Float2& uv) const = 0;
+		virtual Color8 RenderFragment(const Camera& camera, const T& scene, const Float2& uv) const = 0;
 	};
 }
 
