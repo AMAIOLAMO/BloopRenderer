@@ -4,7 +4,7 @@ using namespace Bloop;
 
 PlainMaterial::PlainMaterial(const Color8& color) : ColorMaterial(color) {}
 
-Color8 PlainMaterial::RenderFragment() const
+Color8 PlainMaterial::RenderFragment(const RayCastInfo& rayInfo) const
 {
 	return color;
 }

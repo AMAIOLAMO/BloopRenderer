@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Core\Material\SDFMaterial.cpp" />
     <ClCompile Include="Src\Core\Material\Primitive\PlainMaterial.cpp" />
     <ClCompile Include="Src\Core\Material\Primitive\DiffuseMaterial.cpp" />
     <ClCompile Include="Src\Core\RenderObjects\Primitive\PlaneRenderObject.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="Vendor\Plugins\CXUtils\Diagnostics\Stopwatch.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Core\Material\SDFMaterial.h" />
     <ClInclude Include="Src\Core\Material\Primitive\PlainMaterial.h" />
     <ClInclude Include="Src\Core\Material\Primitive\DiffuseMaterial.h" />
     <ClInclude Include="Src\Core\RenderObjects\Primitive\PlaneRenderObject.h" />

@@ -19,5 +19,5 @@ Color8 SDFSceneRenderer::RenderFragment(const Camera& camera, const SDFScene& sc
 	if (info.DidntHit()) return Color8(0, 0, 0);
 	//else hit
 
-	return info.renderObject->GetMaterial().RenderFragment();
+	return info.renderObject->GetMaterial().RenderFragment(info);
 }

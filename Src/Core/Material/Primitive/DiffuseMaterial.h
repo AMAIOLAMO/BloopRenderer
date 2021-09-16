@@ -13,8 +13,6 @@ namespace Bloop
 		DiffuseMaterial(const Color8& color);
 
 	public:
-		//virtual Color8 RenderFragment(const RayCastInfo& rayInfo) const override;
+		virtual Color8 RenderFragment(const RayCastInfo& rayInfo) const override;
 	};
 }
-
-

@@ -66,6 +66,9 @@
     <ClCompile Include="Src\Core\Material\Primitive\PlainMaterial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\Core\Material\SDFMaterial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vendor\Plugins\Bitmap\bitmap_image.hpp">
@@ -135,6 +138,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Core\Material\Primitive\PlainMaterial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Core\Material\SDFMaterial.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
