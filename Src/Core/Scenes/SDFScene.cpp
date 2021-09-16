@@ -44,7 +44,7 @@ RayCastInfo SDFScene::RayCast(const Ray& ray) const
 		//marched but didn't find anything useful
 		if (dist > MIN_RAYMARCH_DISTANCE)
 		{
-			currentMarchPoint = currentMarchPoint + ray.direction * dist;
+			currentMarchPoint += ray.direction * dist;
 			continue;
 		}
 		//else touched

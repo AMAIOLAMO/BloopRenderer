@@ -23,5 +23,5 @@ Color8 SDFSceneRenderer::RenderPixel(const Camera& camera, const SDFScene& scene
 
 	byte color = (byte)(dist * 255.f);*/
 
-	return Color8(255, 255, 255);
+	return info.renderObject->GetMaterial().RenderPixel();
 }

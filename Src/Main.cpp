@@ -11,6 +11,7 @@
 
 #include "Core/Material/Primitive/ColorMaterial.h"
 #include "Core/Scenes/SDFScene.h"
+#include "Core/RenderObjects/Primitive/PlaneRenderObject.h"
 
 int main()
 {
@@ -31,7 +32,12 @@ int main()
 
 	Camera camera(Float3(0, 0, 0), Float3(0, 0, 1));
 
-	scene.Add(std::make_shared<SphereRenderObject>(Float3(0, 0, 5), new ColorMaterial(Color8(255, 0, 0)), 1.f));
+	scene
+		.Add(std::make_shared<PlaneRenderObject>(
+			Float3(0, 0, 0),
+			new ColorMaterial(Color8(255, 0, 0))
+			)
+		);
 
 
 #pragma region Render

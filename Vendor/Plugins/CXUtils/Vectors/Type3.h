@@ -34,6 +34,9 @@ namespace CXUtils
 		Type3<Type> operator+(const Type3<Type>& other) const { return Type3<Type>(x + other.x, y + other.y, z + other.z); }
 		Type3<Type> operator-(const Type3<Type>& other) const { return Type3<Type>(x - other.x, y - other.y, z - other.z); }
 
+		Type3<Type>& operator+=(const Type3<Type>& other) { x += other.x; y += other.y; z += other.z; return (*this); }
+		Type3<Type>& operator-=(const Type3<Type>& other) { x -= other.x; y -= other.y; z -= other.z; return (*this); }
+
 		Type3<Type> operator*(const Type& value) const { return Type3<Type>(x * value, y * value, z * value); }
 		Type3<Type> operator/(const Type& value) const { return Type3<Type>(x / value, y / value, z / value); }
 
