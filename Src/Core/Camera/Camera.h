@@ -7,7 +7,7 @@ namespace Bloop
 	using namespace CXUtils;
 
 	/// <summary>
-	///		The view of the world :D
+	///		The object used to render
 	/// </summary>
 	class Camera
 	{

@@ -10,16 +10,19 @@ namespace Bloop
 	/// <summary>
 	///		The info returned after raycasting
 	/// </summary>
-	struct RayCastInfo
+	const struct RayCastInfo
 	{
 	public:
-		const Float3 endPoint;
-		const Float3 direction;
-		const float distance;
+		const Float3        endPoint;
+		const float         distance;
 		const RenderObject* renderObject;
 
 	public:
-		RayCastInfo(const Float3& endPoint, const Float3& direction, const float& distance, const RenderObject* renderObject);
+		RayCastInfo(const float& distance);
+		RayCastInfo(const Float3& endPoint, const float& distance, const RenderObject* renderObject);
+
+	public:
+		bool DidntHit() const;
 	};
 }
 

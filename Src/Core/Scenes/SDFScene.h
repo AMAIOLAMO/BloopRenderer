@@ -13,9 +13,12 @@ namespace Bloop
 		static const float MIN_RAYMARCH_DISTANCE;
 
 	protected:
-		float FindClosestFromPoint(const Float3& point, int& index) const;
+		float FindClosestDistanceFromPoint(const Float3& point, int& index) const;
 
 	public:
+		/// <summary>
+		///		Shoots a ray into the scene and returns whether
+		/// </summary>
 		virtual RayCastInfo RayCast(const Ray& ray) const override;
 	};
 }

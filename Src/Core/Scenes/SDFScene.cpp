@@ -3,10 +3,10 @@
 using namespace Bloop;
 
 const size_t SDFScene::MAX_RAYCAST_INTERATION = 100;
-const float SDFScene::MAX_RAYMARCH_DISTANCE = 100.f;
+const float SDFScene::MAX_RAYMARCH_DISTANCE = 120.f;
 const float SDFScene::MIN_RAYMARCH_DISTANCE = .001f;
 
-float SDFScene::FindClosestFromPoint(const Float3& point, int& index) const
+float SDFScene::FindClosestDistanceFromPoint(const Float3& point, int& index) const
 {
 	if (renderObjects.size() == 0) return std::numeric_limits<float>::max();
 	//else
@@ -26,7 +26,7 @@ float SDFScene::FindClosestFromPoint(const Float3& point, int& index) const
 
 RayCastInfo SDFScene::RayCast(const Ray& ray) const
 {
-	Float3 currentMarchPoint = ray.origin;
+	Float3 marchPoint = ray.origin;
 
 	float endDist = 0.f;
 
@@ -35,7 +35,7 @@ RayCastInfo SDFScene::RayCast(const Ray& ray) const
 	for (size_t i = 0; i < MAX_RAYCAST_INTERATION; ++i)
 	{
 		int currentIndex;
-		float dist = FindClosestFromPoint(currentMarchPoint, currentIndex);
+		float dist = FindClosestDistanceFromPoint(marchPoint, currentIndex);
 		endDist += dist;
 
 		//too far
@@ -44,14 +44,14 @@ RayCastInfo SDFScene::RayCast(const Ray& ray) const
 		//marched but didn't find anything useful
 		if (dist > MIN_RAYMARCH_DISTANCE)
 		{
-			currentMarchPoint += ray.direction * dist;
+			marchPoint += ray.direction * dist;
 			continue;
 		}
-		//else touched
+		//else casted
 
-		return RayCastInfo(currentMarchPoint, ray.direction, endDist, renderObjects[currentIndex].get());
+		return RayCastInfo(marchPoint, endDist, renderObjects[currentIndex].get());
 	}
 
 	//else didn't hit anything
-	return RayCastInfo(currentMarchPoint, ray.direction, endDist, nullptr);
+	return RayCastInfo(endDist);
 }

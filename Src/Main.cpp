@@ -33,10 +33,10 @@ int main()
 	Camera camera(Float3(0, 0, 0), Float3(0, 0, 1));
 
 	scene
-		.Add(std::make_shared<PlaneRenderObject>(
-			Float3(0, 0, 0),
-			new ColorMaterial(Color8(255, 0, 0))
-			)
+		.Add(std::make_shared<SphereRenderObject>(
+			Float3(0, 0, 5),
+			new ColorMaterial(Color8(0, 255, 0)),
+			1.f)
 		);
 
 
