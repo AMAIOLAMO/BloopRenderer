@@ -6,9 +6,7 @@ namespace Bloop
 {
     class SDFMaterial;
 
-    /// <summary>
-    ///		An SDF (Signed distance function) driven render object
-    /// </summary>
+    ///	An SDF (Signed distance function) driven render object
     class SDFRenderObject : public RenderObject<SDFMaterial>
     {
     public:

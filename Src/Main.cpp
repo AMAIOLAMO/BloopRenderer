@@ -29,18 +29,18 @@ int main()
 
     SDFScene scene;
 
-    Camera camera( Float3( 0, .3f, 0 ), Float3( 0, 0, 1 ) );
+    Camera camera( Float3( 0, 1, 0 ), Float3( 0, 0, 1 ) );
 
     scene
             .Add( std::make_shared<SphereRenderObject>(
-                    Float3( 0, 0, 5 ),
+                    Float3( 0, 1, 5 ),
                     new SDFDiffuseMaterial( Color8( 0, 255, 0 ) ),
                     1.f )
             )
             .Add( std::make_shared<SphereRenderObject>(
-                    Float3( .5f, 0, 5 ),
+                    Float3( .75f * 2.f, 1, 5.1f ),
                     new SDFDiffuseMaterial( Color8( 200, 200, 0 ) ),
-                    1.f )
+                    .75f )
             )
             .Add( std::make_shared<PlaneRenderObject>(
                           Float3( 0, 0, 0 ),
@@ -68,13 +68,6 @@ int main()
             }
         }
     }
-
-    /*for (size_t x = 0; x < imgDimension.x; ++x) {
-        for (size_t y = 0; y < imgDimension.y; ++y) {
-            resultImg.set_pixel(x, y, (byte) ((float) x / imgDimension.x * 255.f),
-                                (byte) ((float) y / imgDimension.y * 255.f), 0);
-        }
-    }*/
 
     std::cout << "Render elapsed time: " << sw.Stop().count() << std::endl;
 

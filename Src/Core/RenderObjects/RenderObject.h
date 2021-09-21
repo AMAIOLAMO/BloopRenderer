@@ -7,9 +7,9 @@
 namespace Bloop {
     using namespace CXUtils;
 
-    /// <summary>
-    ///		an object which could be rendered in scene
-    /// </summary>
+    /// an object which could be rendered in scene
+    /// \tparam TMaterial The material used for this RenderObject <br/>
+    /// Note that this doesn't require to be a complete type
     template<typename TMaterial>
     class RenderObject {
     protected:

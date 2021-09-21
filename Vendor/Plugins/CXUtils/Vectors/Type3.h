@@ -11,23 +11,23 @@ namespace CXUtils {
         Type x, y, z;
 
     public:
-        Type3(const Type &x, const Type &y, const Type &z) : x{x}, y{y}, z{z} {}
+        Type3(const Type &x, const Type &y, const Type &z) noexcept: x{x}, y{y}, z{z} {}
 
-        Type3(const Type3<Type> &other) : x{other.x}, y{other.y}, z{other.z} {}
+        Type3(const Type3<Type> &other) noexcept: x{other.x}, y{other.y}, z{other.z} {}
 
         template<typename ConvertingType>
         explicit Type3(const Type3<ConvertingType> &from) : x{static_cast<Type>(from.x)}, y{static_cast<Type>(from.y)},
                                                             z{static_cast<Type>(from.z)} {}
 
-        Type SqrMagnitude() const { return x * x + y * y + z * z; }
+        Type SqrMagnitude() const noexcept { return x * x + y * y + z * z; }
 
-        Type Magnitude() const { return sqrt(SqrMagnitude()); }
+        Type Magnitude() const noexcept { return sqrt(SqrMagnitude()); }
 
-        Type Dot(const Type3 &other) const { return x * other.x + y * other.y + z * other.z; }
+        Type Dot(const Type3 &other) const noexcept { return x * other.x + y * other.y + z * other.z; }
 
-        Type3<Type> Normalized() const {
+        Type3<Type> Normalized() const noexcept {
             float magnitude = Magnitude();
-            return magnitude == 0.f ? Type3<Type>(0, 0, 0) : (*this) / magnitude;
+            return magnitude == 0.f ? Type3<Type>{0, 0, 0} : (*this) / magnitude;
         }
 
     public:
