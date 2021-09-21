@@ -2,7 +2,7 @@
 #include <thread>
 #include <filesystem>
 
-#include "Core/Scene.h"
+#include "Core/Scenes/Scene.h"
 #include "Core/RenderObjects/Primitive/SphereRenderObject.h"
 #include "Core/SceneRenderer/SDFSceneRenderer.h"
 
@@ -10,8 +10,6 @@
 #include "../Vendor/Plugins/CXUtils/Diagnostics/Stopwatch.h"
 
 #include "Core/Material/Primitive/DiffuseMaterial.h"
-#include "Core/Scenes/SDFScene.h"
-#include "Core/RenderObjects/Primitive/PlaneRenderObject.h"
 
 int main()
 {

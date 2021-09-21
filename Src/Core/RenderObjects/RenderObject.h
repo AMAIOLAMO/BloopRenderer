@@ -10,7 +10,7 @@ namespace Bloop
 	using namespace CXUtils;
 
 	/// <summary>
-	///		an object which could be renderered in scene
+	///		an object which could be rendered in scene
 	/// </summary>
 	class RenderObject
 	{
@@ -22,8 +22,8 @@ namespace Bloop
 		RenderObject(const Float3& position, Material* material);
 		~RenderObject();
 
-		const Float3& GetPosition() const;
-		const Material& GetMaterial() const;
+		[[nodiscard]] const Float3& GetPosition() const;
+		[[nodiscard]] const Material& GetMaterial() const;
 	};
 }
 

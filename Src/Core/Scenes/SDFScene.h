@@ -1,29 +1,29 @@
 #pragma once
 
-#include "../Scene.h"
-#include "../RenderObjects/Primitive/SphereRenderObject.h"
+#include "Scene.h"
+#include "../RenderObjects/SDFRenderObject.h"
 
 namespace Bloop
 {
 	class SDFScene : public Scene<SDFRenderObject>
 	{
 	public:
-		static const size_t MAX_RAYCAST_INTERATION;
-		static const float MAX_RAYMARCH_DISTANCE;
-		static const float MIN_RAYMARCH_DISTANCE;
-		static const float NORMAL_EPSILON;
+		static const size_t MaxRayCastDistance;
+		static const float MaxRayMarchDistance;
+		static const float MinRayMarchDistance;
+		static const float NormalEpsilon;
 
 	protected:
 		float FindClosestDistanceFromPoint(const Float3& point) const;
-		float FindClosestDistanceFromPoint(const Float3& point, int& index) const;
+		float FindClosestDistanceFromPoint(const Float3& point, size_t& index) const;
 
 	public:
-		Float3 GetNormal(const Float3& point) const;
+        [[nodiscard]] Float3 GetNormal(const Float3& point) const;
 
 		/// <summary>
 		///		Shoots a ray into the scene and returns whether
 		/// </summary>
-		virtual RayCastInfo RayCast(const Ray& ray) const override;
+		[[nodiscard]] virtual RayCastInfo RayCast(const Ray& ray) const override;
 	};
 }
 
