@@ -1,19 +1,19 @@
 #pragma once
 
-#include "../Material.h"
+#include "../SDFMaterial.h"
 
 namespace Bloop
 {
 	/// <summary>
 	///		A basic material that has a color
 	/// </summary>
-	class ColorMaterial : public Material
+	class SDFColorMaterial : public SDFMaterial
 	{
 	protected:
 		Color8 color;
 
 	public:
-		ColorMaterial(const Color8& color);
+		explicit SDFColorMaterial(const Color8& color);
 	};
 }
 

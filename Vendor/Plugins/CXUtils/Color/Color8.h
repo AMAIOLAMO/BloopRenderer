@@ -27,8 +27,10 @@ namespace CXUtils
 		
 	public:
 		Color8(const byte& r, const byte& g, const byte& b);
-		Color8(const Byte3& vector);
-		Color8(const byte& grayscale);
+        Color8(const Color8& other);
+
+		explicit Color8(const Byte3& vector);
+		explicit Color8(const byte& grayscale);
 
 	public:
 		Color8 operator+(const Color8& other) const;

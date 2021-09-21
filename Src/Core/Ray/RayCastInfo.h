@@ -9,7 +9,7 @@ namespace Bloop
 	class RenderObject;
 
 	/// <summary>
-	///		The info returned after raycasting
+	///		The info returned after ray casting
 	/// </summary>
 	const struct RayCastInfo
 	{

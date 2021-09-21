@@ -9,7 +9,7 @@
 #include "../Vendor/Plugins/Bitmap/bitmap_image.hpp"
 #include "../Vendor/Plugins/CXUtils/Diagnostics/Stopwatch.h"
 
-#include "Core/Material/Primitive/DiffuseMaterial.h"
+#include "Core/Material/Primitive/SDFDiffuseMaterial.h"
 
 int main()
 {
@@ -33,7 +33,7 @@ int main()
 	scene
 		.Add(std::make_shared<SphereRenderObject>(
 			Float3(0, 0, 5),
-			new DiffuseMaterial(Color8(0, 255, 0)),
+			new SDFDiffuseMaterial(Color8(0, 255, 0)),
 			1.f)
 		);
 
