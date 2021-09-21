@@ -14,7 +14,7 @@ Color8 SDFDiffuseMaterial::RenderFragment( const RayCastInfo<SDFRenderObject>& r
 {
     Float3 fakeLightDirection = (fakeLightPosition - rayInfo.renderObject->GetPosition()).Normalized();
 
-    float diffuse = std::fmax( fakeLightDirection.Dot( scene.GetNormal( rayInfo.endPoint ) ), .3f );
+    float diffuse = std::fmax( fakeLightDirection.Dot( scene.GetNormal( rayInfo.endPoint ) ), .1f );
 
     byte r = (byte) ((float) color.r * diffuse),
             g = (byte) ((float) color.g * diffuse),

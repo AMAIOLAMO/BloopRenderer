@@ -11,6 +11,7 @@
 
 #include <SDFDiffuseMaterial.h>
 #include <PlaneRenderObject.h>
+#include <SDFPlainMaterial.h>
 
 int main()
 {
@@ -27,7 +28,7 @@ int main()
 
     SDFSceneRenderer renderer( profile );
 
-    SDFScene scene;
+    SDFScene scene( 100, 200, .0005f, .001f );
 
     Camera camera( Float3( 0, 1, 0 ), Float3( 0, 0, 1 ) );
 
@@ -44,7 +45,7 @@ int main()
             )
             .Add( std::make_shared<PlaneRenderObject>(
                           Float3( 0, 0, 0 ),
-                          new SDFDiffuseMaterial( Color8( 0, 0, 200 ) )
+                          new SDFPlainMaterial( Color8( 0, 0, 200 ) )
                   )
             );
 

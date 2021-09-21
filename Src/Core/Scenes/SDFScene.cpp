@@ -5,36 +5,47 @@
 
 using namespace Bloop;
 
-const size_t SDFScene::MaxRayCastDistance = 100;
-const float SDFScene::MaxRayMarchDistance = 120.f;
-const float SDFScene::MinRayMarchDistance = .001f;
-const float SDFScene::NormalEpsilon = .01f;
+SDFScene::SDFScene() :
+        Scene<SDFRenderObject>(), _maxRayCastIteration( 100 ),
+        _maxRayMarchDistance( 120.f ), _minRayMarchDistance( .001f ), _normalEpsilon( .01f )
+{ }
 
-float SDFScene::FindClosestDistanceFromPoint(const Float3 &point) const {
-    if (renderObjects.empty()) return std::numeric_limits<float>::max();
+SDFScene::SDFScene( const size_t& maxRayCastIteration, const float& maxRayMarchDistance,
+                    const float& minRayMarchDistance, const float& normalEpsilon ) :
+        Scene(),
+        _maxRayCastIteration( maxRayCastIteration ), _maxRayMarchDistance( maxRayMarchDistance ),
+        _minRayMarchDistance( minRayMarchDistance ), _normalEpsilon( normalEpsilon )
+{ }
+
+
+float SDFScene::FindClosestDistanceFromPoint( const Float3& point ) const
+{
+    if ( renderObjects.empty() ) return std::numeric_limits<float>::max();
     //else
 
     float bestMin = std::numeric_limits<float>::max();
 
-    for(const auto& renderObject : renderObjects)
+    for ( const auto& renderObject: renderObjects )
     {
-        float dist = renderObject->GetDistance(point);
-        if (dist > bestMin) continue;
+        float dist = renderObject->GetDistance( point );
+        if ( dist > bestMin ) continue;
         bestMin = dist;
     }
 
     return bestMin;
 }
 
-float SDFScene::FindClosestDistanceFromPoint(const Float3 &point, size_t &index) const {
-    if (renderObjects.empty()) return std::numeric_limits<float>::max();
+float SDFScene::FindClosestDistanceFromPoint( const Float3& point, size_t& index ) const
+{
+    if ( renderObjects.empty() ) return std::numeric_limits<float>::max();
     //else
 
     float bestMin = std::numeric_limits<float>::max();
 
-    for (size_t i = 0; i < renderObjects.size(); i++) {
-        float dist = renderObjects[i]->GetDistance(point);
-        if (dist > bestMin) continue;
+    for ( size_t i = 0; i < renderObjects.size(); i++ )
+    {
+        float dist = renderObjects[i]->GetDistance( point );
+        if ( dist > bestMin ) continue;
         bestMin = dist;
         index = i;
     }
@@ -42,21 +53,24 @@ float SDFScene::FindClosestDistanceFromPoint(const Float3 &point, size_t &index)
     return bestMin;
 }
 
-RayCastInfo<SDFRenderObject> SDFScene::RayCast(const Ray &ray) const {
+RayCastInfo<SDFRenderObject> SDFScene::RayCast( const Ray& ray ) const
+{
     Float3 marchPoint = ray.origin;
 
     float endDist = 0.f;
 
-    for (size_t i = 0; i < MaxRayCastDistance; ++i) {
+    for ( size_t i = 0; i < _maxRayCastIteration; ++i )
+    {
         size_t currentIndex;
-        float dist = FindClosestDistanceFromPoint(marchPoint, currentIndex);
+        float dist = FindClosestDistanceFromPoint( marchPoint, currentIndex );
         endDist += dist;
 
         //too far
-        if (endDist > MaxRayMarchDistance) break;
+        if ( endDist > _maxRayMarchDistance ) break;
 
         //marched but didn't find anything useful
-        if (dist > MinRayMarchDistance) {
+        if ( dist > _minRayMarchDistance )
+        {
             marchPoint += ray.direction * dist;
             continue;
         }
@@ -69,12 +83,18 @@ RayCastInfo<SDFRenderObject> SDFScene::RayCast(const Ray &ray) const {
     return {ray.direction, endDist};
 }
 
-Float3 SDFScene::GetNormal(const Float3 &point) const {
-    float d = FindClosestDistanceFromPoint(point);
+Float3 SDFScene::GetNormal( const Float3& point ) const
+{
+    float d = FindClosestDistanceFromPoint( point );
 
     return Float3(
-            d - FindClosestDistanceFromPoint(point - Float3(NormalEpsilon, 0, 0)),
-            d - FindClosestDistanceFromPoint(point - Float3(0, NormalEpsilon, 0)),
-            d - FindClosestDistanceFromPoint(point - Float3(0, 0, NormalEpsilon))
+            d - FindClosestDistanceFromPoint( point - Float3( _normalEpsilon, 0, 0 ) ),
+            d - FindClosestDistanceFromPoint( point - Float3( 0, _normalEpsilon, 0 ) ),
+            d - FindClosestDistanceFromPoint( point - Float3( 0, 0, _normalEpsilon ) )
     ).Normalized();
 }
+
+
+
+
+
