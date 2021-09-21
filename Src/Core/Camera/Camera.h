@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../../../Vendor/Plugins/CXUtils/Vectors/Type3.h"
+#include <Type3.h>
+#include <Type2.h>
 
 namespace Bloop
 {
@@ -17,6 +18,9 @@ namespace Bloop
 
 	public:
 		Camera(const Float3& position, const Float3& viewDirection);
+
+    public:
+        /*[[nodiscard]] Float3 RayFromUV(const Float2& uv, const UInt2& resolution) const;*/
 	};
 }
 

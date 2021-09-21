@@ -11,6 +11,9 @@ namespace Bloop
 
     class SDFScene;
 
+    /// <summary>
+    ///     A Material that is based on SDF
+    /// </summary>
 	class SDFMaterial : public Material
 	{
     public:
