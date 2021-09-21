@@ -1,6 +1,7 @@
 #include "SDFScene.h"
 
-#include "../../../Vendor/Plugins/CXUtils/Vectors/Type2.h"
+#include <Type2.h>
+#include <RayCastInfo.h>
 
 using namespace Bloop;
 
@@ -22,10 +23,6 @@ float SDFScene::FindClosestDistanceFromPoint(const Float3 &point) const {
         bestMin = dist;
     }
 
-    /*for (size_t i = 0; i < renderObjects.size(); i++) {
-
-    }*/
-
     return bestMin;
 }
 
@@ -45,7 +42,7 @@ float SDFScene::FindClosestDistanceFromPoint(const Float3 &point, size_t &index)
     return bestMin;
 }
 
-RayCastInfo SDFScene::RayCast(const Ray &ray) const {
+RayCastInfo<SDFRenderObject> SDFScene::RayCast(const Ray &ray) const {
     Float3 marchPoint = ray.origin;
 
     float endDist = 0.f;

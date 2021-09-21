@@ -2,4 +2,4 @@
 
 using namespace Bloop;
 
-SDFRenderObject::SDFRenderObject(const Float3& position, Material* material) : RenderObject(position, material) {}
+SDFRenderObject::SDFRenderObject(const Float3& position, SDFMaterial* material) : RenderObject(position, material) {}

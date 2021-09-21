@@ -4,11 +4,13 @@
 #include <iostream>
 #include <memory>
 
-#include "Ray/Ray.h"
-#include "Ray/RayCastInfo.h"
+#include <Ray.h>
 
 namespace Bloop
 {
+    template<typename TRenderObject>
+    struct RayCastInfo;
+
 	/// <summary>
 	///		Where every RenderObject is stored
 	/// </summary>
@@ -20,7 +22,7 @@ namespace Bloop
 
 	protected:
 		Scene() : renderObjects() { }
-		virtual ~Scene() { }
+		virtual ~Scene() = default;
 
 	public:
 		/// <summary>
@@ -32,7 +34,7 @@ namespace Bloop
 			return (*this);
 		}
 
-		virtual RayCastInfo RayCast(const Ray& ray) const = 0;
+		virtual RayCastInfo<T> RayCast(const Ray& ray) const = 0;
 	};
 }
 

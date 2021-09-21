@@ -13,6 +13,6 @@ namespace Bloop
 		explicit SDFPlainMaterial(const Color8& color);
 
 	public:
-		[[nodiscard]] Color8 RenderFragment(const RayCastInfo& rayInfo) const override;
+		[[nodiscard]] Color8 RenderFragment(const RayCastInfo<SDFRenderObject>& rayInfo, const SDFScene& scene) const override;
 	};
 }

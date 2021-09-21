@@ -15,7 +15,7 @@ namespace Bloop
 		const UInt2 Dimension;
 
 	public:
-		RenderProfile(const UInt2& dimension);
+		explicit RenderProfile(const UInt2& dimension);
 	};
 }
 

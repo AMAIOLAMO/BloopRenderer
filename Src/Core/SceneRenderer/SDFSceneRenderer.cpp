@@ -1,5 +1,8 @@
 #include "SDFSceneRenderer.h"
 
+#include <RayCastInfo.h>
+#include <SDFMaterial.h>
+
 using namespace Bloop;
 
 SDFSceneRenderer::SDFSceneRenderer(const RenderProfile& renderProfile) : SceneRenderer(renderProfile) {}
@@ -16,8 +19,8 @@ Color8 SDFSceneRenderer::RenderFragment(const Camera& camera, const SDFScene& sc
 
 	const auto info = scene.RayCast(Ray(camera.position, newViewDir));
 
-	if (info.DidntHit()) return Color8(0, 0, 0);
+	if (info.DidntHit()) return {0, 0, 0};
 	//else hit
 
-	return info.renderObject->GetMaterial().RenderFragment(info);
+	return info.renderObject->GetMaterial().RenderFragment(info, scene);
 }

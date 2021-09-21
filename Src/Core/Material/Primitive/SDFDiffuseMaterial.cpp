@@ -1,15 +1,16 @@
 #include "SDFDiffuseMaterial.h"
 
-#include "../../Ray/RayCastInfo.h"
+#include <RayCastInfo.h>
+#include <SDFScene.h>
 
 using namespace Bloop;
 
 SDFDiffuseMaterial::SDFDiffuseMaterial(const Color8 &color) : SDFColorMaterial{color} {}
 
-const Float3 _fakeLightDirection(Float3{0, 3, -1}.Normalized());
+const Float3 _fakeLightDirection(Float3{0, -1, -1}.Normalized());
 
-Color8 SDFDiffuseMaterial::RenderFragment(const RayCastInfo &rayInfo) const {
-    float diffuse = std::fmax(_fakeLightDirection.Dot(-rayInfo.direction), 0.f);
+Color8 SDFDiffuseMaterial::RenderFragment(const RayCastInfo<SDFRenderObject> &rayInfo, const SDFScene& scene) const {
+    float diffuse = std::fmax(_fakeLightDirection.Dot(scene.GetNormal(rayInfo.endPoint)), .1f);
 
     float r = color.r / 255.f * diffuse,
             g = color.g / 255.f * diffuse,

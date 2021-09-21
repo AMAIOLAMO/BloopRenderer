@@ -2,14 +2,14 @@
 #include <thread>
 #include <filesystem>
 
-#include "Core/Scenes/Scene.h"
-#include "Core/RenderObjects/Primitive/SphereRenderObject.h"
-#include "Core/SceneRenderer/SDFSceneRenderer.h"
+#include <Scene.h>
+#include <SphereRenderObject.h>
+#include <SDFSceneRenderer.h>
 
-#include "../Vendor/Plugins/Bitmap/bitmap_image.hpp"
-#include "../Vendor/Plugins/CXUtils/Diagnostics/Stopwatch.h"
+#include <bitmap_image.hpp>
+#include <Stopwatch.h>
 
-#include "Core/Material/Primitive/SDFDiffuseMaterial.h"
+#include <SDFDiffuseMaterial.h>
 
 int main()
 {

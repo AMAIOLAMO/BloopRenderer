@@ -10,9 +10,9 @@ namespace Bloop
 	class SDFDiffuseMaterial : public SDFColorMaterial
 	{
 	public:
-		SDFDiffuseMaterial(const Color8& color);
+		explicit SDFDiffuseMaterial(const Color8& color);
 
 	public:
-		virtual Color8 RenderFragment(const RayCastInfo& rayInfo) const override;
+		[[nodiscard]] Color8 RenderFragment(const RayCastInfo<SDFRenderObject>& rayInfo, const SDFScene& scene) const override;
 	};
 }

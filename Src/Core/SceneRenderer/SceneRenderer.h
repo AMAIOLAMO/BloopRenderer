@@ -8,7 +8,7 @@
 namespace Bloop
 {
 	/// <summary>
-	///		A factory used for renderering a scene
+	///		A factory used for rendering a scene
 	/// </summary>
 	template<typename T>
 	class SceneRenderer
@@ -17,7 +17,7 @@ namespace Bloop
 		const RenderProfile renderProfile;
 
 	protected:
-		SceneRenderer(const RenderProfile& renderProfile) : renderProfile(renderProfile) {}
+		explicit SceneRenderer(const RenderProfile& renderProfile) : renderProfile(renderProfile) {}
 
 		virtual Color8 RenderFragment(const Camera& camera, const T& scene, const Float2& uv) const = 0;
 	};

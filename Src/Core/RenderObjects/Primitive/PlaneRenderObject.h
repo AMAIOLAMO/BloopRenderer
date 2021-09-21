@@ -6,9 +6,9 @@ namespace Bloop
 class PlaneRenderObject : public SDFRenderObject
 {
 public:
-	PlaneRenderObject(const Float3& position, Material* material);
+	PlaneRenderObject(const Float3& position, SDFMaterial* material);
 
 public:
-	virtual float GetDistance(const Float3& point) const override;
+	[[nodiscard]] float GetDistance(const Float3& point) const override;
 };
 }

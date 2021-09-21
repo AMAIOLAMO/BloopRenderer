@@ -1,7 +1,7 @@
 #pragma once
 
 #include "SceneRenderer.h"
-#include "../Scenes/SDFScene.h"
+#include <SDFScene.h>
 
 namespace Bloop
 {
@@ -10,10 +10,10 @@ namespace Bloop
 	class SDFSceneRenderer : public SceneRenderer<SDFScene>
 	{
 	public:
-		SDFSceneRenderer(const RenderProfile& renderProfile);
+		explicit SDFSceneRenderer(const RenderProfile& renderProfile);
 
 		// Inherited via SceneRenderer
-		virtual Color8 RenderFragment(const Camera& camera, const SDFScene& scene, const Float2& uv) const;
+		[[nodiscard]] Color8 RenderFragment(const Camera& camera, const SDFScene& scene, const Float2& uv) const override;
 	};
 }
 

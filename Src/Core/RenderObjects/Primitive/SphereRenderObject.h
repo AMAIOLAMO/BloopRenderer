@@ -11,10 +11,10 @@ namespace Bloop
 		float _radius;
 
 	public:
-		SphereRenderObject(const Float3& position, Material* material, const float& radius);
+		SphereRenderObject(const Float3& position, SDFMaterial* material, const float& radius);
 
 	public:
-		virtual float GetDistance(const Float3& point) const override;
+		[[nodiscard]] float GetDistance(const Float3& point) const override;
 	};
 }
 
