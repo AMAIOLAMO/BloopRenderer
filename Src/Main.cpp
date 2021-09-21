@@ -10,35 +10,42 @@
 #include <Stopwatch.h>
 
 #include <SDFDiffuseMaterial.h>
+#include <PlaneRenderObject.h>
 
-int main() {
+int main()
+{
     using namespace Bloop;
     using namespace CXUtils;
 
     Stopwatch sw;
 
-    UInt2 imgDimension(1920, 1080);
+    UInt2 imgDimension( 1920, 1080 );
 
-    bitmap_image resultImg(imgDimension.x, imgDimension.y);
+    bitmap_image resultImg( imgDimension.x, imgDimension.y );
 
-    RenderProfile profile(imgDimension);
+    RenderProfile profile( imgDimension );
 
-    SDFSceneRenderer renderer(profile);
+    SDFSceneRenderer renderer( profile );
 
     SDFScene scene;
 
-    Camera camera(Float3(0, 0, 0), Float3(0, 0, 1));
+    Camera camera( Float3( 0, .3f, 0 ), Float3( 0, 0, 1 ) );
 
     scene
-            .Add(std::make_shared<SphereRenderObject>(
-                    Float3(0, 0, 5),
-                    new SDFDiffuseMaterial(Color8(0, 255, 0)),
-                    1.f)
+            .Add( std::make_shared<SphereRenderObject>(
+                    Float3( 0, 0, 5 ),
+                    new SDFDiffuseMaterial( Color8( 0, 255, 0 ) ),
+                    1.f )
             )
-            .Add(std::make_shared<SphereRenderObject>(
-                    Float3(.5f, 0, 5),
-                    new SDFDiffuseMaterial(Color8(150, 150, 0)),
-                    1.f)
+            .Add( std::make_shared<SphereRenderObject>(
+                    Float3( .5f, 0, 5 ),
+                    new SDFDiffuseMaterial( Color8( 200, 200, 0 ) ),
+                    1.f )
+            )
+            .Add( std::make_shared<PlaneRenderObject>(
+                          Float3( 0, 0, 0 ),
+                          new SDFDiffuseMaterial( Color8( 0, 0, 200 ) )
+                  )
             );
 
     std::cout << "===Start Rendering===\n";
@@ -47,15 +54,18 @@ int main() {
 #pragma region Render
     sw.Start();
 
-    //NOTE: remember that bitmap_image's uv starts from top left, thus flipping the image vertically is important
-    for (size_t x = 0; x < imgDimension.x; ++x) {
-        for (size_t y = 0; y < imgDimension.y; ++y) {
-            resultImg.set_pixel(
-                    x, y, renderer.RenderFragment(
-                            camera, scene,
-                            Float2((float) x / imgDimension.x, (1.f - (float) y / imgDimension.y) /* Flips the image vertically*/ )
-                    )
-            );
+    {
+        std::vector<Color8> colors( imgDimension.x * imgDimension.y );
+
+        renderer.RenderImage( camera, scene, imgDimension, colors.data() );
+
+        //NOTE: remember that bitmap_image's uv starts from top left, thus flipping the image vertically is important
+        for ( size_t x = 0; x < imgDimension.x; ++x )
+        {
+            for ( size_t y = 0; y < imgDimension.y; ++y )
+            {
+                resultImg.set_pixel( x, y, colors[x + (imgDimension.y - y - 1) * imgDimension.x] );
+            }
         }
     }
 
@@ -76,11 +86,15 @@ int main() {
 
     std::filesystem::path path = std::filesystem::current_path();
 
-    path.append("Result.bmp");
+    path.append( "Result.bmp" );
 
-    resultImg.save_image(path.string());
+    const auto pathStr = path.string();
 
-    std::cout << "Saved img to path: " << path.string() << std::endl;
+    resultImg.save_image( pathStr );
+
+    std::cout << "Saved img to path: " << pathStr << std::endl;
+
+    std::system( pathStr.c_str() );
 
 #pragma endregion
 }

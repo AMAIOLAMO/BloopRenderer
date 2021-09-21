@@ -7,5 +7,5 @@ SphereRenderObject::SphereRenderObject(const Float3& position, SDFMaterial* mate
 
 float SphereRenderObject::GetDistance(const Float3& point) const
 {
-	return (point - _position).Magnitude() - _radius;
+	return (_position - point).Magnitude() - _radius;
 }

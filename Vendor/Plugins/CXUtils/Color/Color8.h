@@ -26,6 +26,7 @@ namespace CXUtils
 		};
 		
 	public:
+        Color8();
 		Color8(const byte& r, const byte& g, const byte& b);
         Color8(const Color8& other);
 
