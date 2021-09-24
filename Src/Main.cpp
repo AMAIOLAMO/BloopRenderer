@@ -30,7 +30,14 @@ int main()
 
     SDFScene scene( 100, 200, .0005f, .001f );
 
-    Camera camera( Float3( 0, 1, 0 ), Float3( 0, 0, 1 ) );
+    Camera camera( Float3( 0, 1, 0 ), Float3( 0, 1, 0 ), Float3( 0, 0, 1 ).Normalized(), 50 );
+
+    const auto matrix = camera.GetUVToViewLocalMatrix();
+
+    std::cout << matrix.m00 << " " << matrix.m10 << " " << matrix.m20 << " " << matrix.m30 << " col 0\n"
+              << matrix.m01 << " " << matrix.m11 << " " << matrix.m21 << " " << matrix.m31 << " col 1\n"
+              << matrix.m02 << " " << matrix.m12 << " " << matrix.m22 << " " << matrix.m32 << " col 2\n"
+              << matrix.m03 << " " << matrix.m13 << " " << matrix.m23 << " " << matrix.m33 << " col 3\n";
 
     scene
             .Add( std::make_shared<SphereRenderObject>(

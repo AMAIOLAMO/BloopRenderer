@@ -2,6 +2,7 @@
 
 #include <Type3.h>
 #include <Type2.h>
+#include <Matrix4x4.h>
 
 namespace Bloop
 {
@@ -14,13 +15,15 @@ namespace Bloop
 	{
 	public:
 		Float3 position;
-		Float3 viewDirection;
+		Float3 forward;
+        Float3 up;
+        float fov;
 
 	public:
-		Camera(const Float3& position, const Float3& viewDirection);
+		Camera(const Float3& position, const Float3& up, const Float3& forward, const float& fov = 20.f);
 
     public:
-        /*[[nodiscard]] Float3 RayFromUV(const Float2& uv, const UInt2& resolution) const;*/
+        [[nodiscard]] Float4x4 GetUVToViewLocalMatrix() const;
 	};
 }
 

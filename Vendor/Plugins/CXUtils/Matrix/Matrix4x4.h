@@ -14,7 +14,7 @@ namespace CXUtils
             struct
             {
                 T
-                        m00, m10, m20, m30, //col 0
+                m00, m10, m20, m30, //col 0
                 m01, m11, m21, m31, //col 1
                 m02, m12, m22, m32, //col 2
                 m03, m13, m23, m33; //col 3
@@ -53,7 +53,7 @@ namespace CXUtils
 
     public:
         /// Transforms the (direction / rotation), position and scale of the vector
-        Type3<T> Transform( const Type3<T>& vector )
+        Type3<T> Transform( const Type3<T>& vector ) const
         {
             const float num = (T) 1 / ((m30 * vector.x + m31 * vector.y + m32 * vector.z) + m33);
 
@@ -65,7 +65,7 @@ namespace CXUtils
         }
 
         /// Transforms the (direction / rotation) and position of the vector
-        Type3<T> Transform3x4( const Type3<T>& vector )
+        Type3<T> Transform3x4( const Type3<T>& vector ) const
         {
             return {
                     m00 * vector.x + m01 * vector.y + m02 * vector.z + m03,
@@ -75,7 +75,7 @@ namespace CXUtils
         }
 
         /// Transforms the (direction / rotation) of the vector
-        Type3<T> TransformDirection( const Type3<T>& vector )
+        Type3<T> TransformDirection( const Type3<T>& vector ) const
         {
             return {
                     m00 * vector.x + m01 * vector.y + m02 * vector.z,

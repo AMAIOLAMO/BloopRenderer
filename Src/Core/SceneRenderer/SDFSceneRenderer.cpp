@@ -5,25 +5,34 @@
 
 using namespace Bloop;
 
-SDFSceneRenderer::SDFSceneRenderer(const RenderProfile &renderProfile) : SceneRenderer(renderProfile) {}
+SDFSceneRenderer::SDFSceneRenderer( const RenderProfile& renderProfile ) : SceneRenderer( renderProfile )
+{ }
 
-Color8 SDFSceneRenderer::RenderFragment(const Camera &camera, const SDFScene &scene, const Float2 &uv) const {
-    const float dimensionRate = (float) renderProfile.Dimension.y / renderProfile.Dimension.x;
+Color8 SDFSceneRenderer::RenderFragment( const Camera& camera, const SDFScene& scene, const Float2& uv ) const
+{
+    const float aspectRatio = (float) renderProfile.Dimension.x / (float) renderProfile.Dimension.y;
 
-    //TODO: this is not using camera, Dunno how to calculate that, so this is it for now
-    const Float3 newViewDir = Float3(
-            (uv.x - .5f) * 2.f,
-            (uv.y - .5f) * 2.f * dimensionRate,
-            1.f)
-            .Normalized();
+    const Float4x4 uvToCamLocalMatrix = camera.GetUVToViewLocalMatrix();
 
-    const auto info = scene.RayCast(Ray(camera.position, newViewDir));
+    const Float3 newUV = Float3(
+            (uv.x - .5f) * 2.f * aspectRatio * camera.fov,
+            (uv.y - .5f) * 2.f * camera.fov,
+            100.f ).Normalized();
 
-    if (info.DidntHit()) return {0, 0, 0};
+    /*const Float3 newViewDir = Float3(
+            (uv.x - .5f) * 2.f * aspectRatio * camera.fov,
+            (uv.y - .5f) * 2.f * camera.fov,
+            1.f ).Normalized();*/
+
+    const Float3 newViewDir = uvToCamLocalMatrix.TransformDirection( newUV );
+
+    const auto info = scene.RayCast( Ray( camera.position, newViewDir ) );
+
+    if ( info.DidntHit() ) return {0, 0, 0};
     //else hit
 
 #if 1
-    return info.renderObject->GetMaterial().RenderFragment(info, scene);
+    return info.renderObject->GetMaterial().RenderFragment( info, scene );
 #else //DEBUG
     const auto normal = scene.GetNormal(info.endPoint);
 

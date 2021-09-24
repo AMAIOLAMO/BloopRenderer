@@ -38,7 +38,7 @@ namespace Bloop
                     colorBuffer[x + y * resolution.x] =
                             RenderFragment( camera, scene, Float2(
                                                     (float) x / static_cast<float>(resolution.x),
-                                                    (float) y / static_cast<float >(resolution.y)
+                                                    (float) y / static_cast<float>(resolution.y)
                                             )
                             );
                 }
