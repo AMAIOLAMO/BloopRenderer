@@ -2,7 +2,7 @@
 
 #include <utility>
 
-#include "../Camera/Camera.h"
+#include <Camera.h>
 #include <RenderProfile.h>
 #include <Color8.h>
 #include <Type2.h>

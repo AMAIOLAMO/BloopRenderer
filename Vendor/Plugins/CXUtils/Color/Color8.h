@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Vectors/Type3.h"
+#include "../Vector/Type3.h"
 
 namespace CXUtils
 {
