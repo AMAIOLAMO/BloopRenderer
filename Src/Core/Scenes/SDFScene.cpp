@@ -25,6 +25,7 @@ float SDFScene::FindClosestDistanceFromPoint( const Float3& point ) const
 
     float bestMin = std::numeric_limits<float>::max();
 
+#pragma
     for ( const auto& renderObject: renderObjects )
     {
         float dist = renderObject->GetDistance( point );
