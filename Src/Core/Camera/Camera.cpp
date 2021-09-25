@@ -8,7 +8,7 @@ Camera::Camera( const Float3& position, const Float3& up, const Float3& forward,
 
 Float4x4 Camera::GetUVToViewLocalMatrix() const
 {
-    const auto right = up.Cross( forward );
+    const auto right = up.Cross( forward ); // forward x -up = up x forward
 
     return {
             right.x, right.y, right.z, 0,

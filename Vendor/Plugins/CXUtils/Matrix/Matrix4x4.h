@@ -14,7 +14,7 @@ namespace CXUtils
             struct
             {
                 T
-                m00, m10, m20, m30, //col 0
+                        m00, m10, m20, m30, //col 0
                 m01, m11, m21, m31, //col 1
                 m02, m12, m22, m32, //col 2
                 m03, m13, m23, m33; //col 3
@@ -78,9 +78,9 @@ namespace CXUtils
         Type3<T> TransformDirection( const Type3<T>& vector ) const
         {
             return {
-                    m00 * vector.x + m01 * vector.y + m02 * vector.z,
-                    m10 * vector.x + m11 * vector.y + m12 * vector.z,
-                    m20 * vector.x + m21 * vector.y + m22 * vector.z
+                    m00 * vector.x + m01 * vector.y + m02 * vector.z, // vector * row 0
+                    m10 * vector.x + m11 * vector.y + m12 * vector.z, // vector * row 1
+                    m20 * vector.x + m21 * vector.y + m22 * vector.z  // vector * row 2
             };
         }
 
@@ -88,19 +88,29 @@ namespace CXUtils
         static Matrix4x4<T> Identity()
         {
             return {
-                    (T) 1, (T) 0, (T) 0, (T) 0,
-                    (T) 0, (T) 1, (T) 0, (T) 0,
-                    (T) 0, (T) 0, (T) 1, (T) 0,
-                    (T) 0, (T) 0, (T) 0, (T) 1
+                    (T) 1, (T) 0, (T) 0, (T) 0, // col 0
+                    (T) 0, (T) 1, (T) 0, (T) 0, // col 1
+                    (T) 0, (T) 0, (T) 1, (T) 0, // col 2
+                    (T) 0, (T) 0, (T) 0, (T) 1  // col 3
+            };
+        }
+
+        static Matrix4x4<T> Scalar( const T& value )
+        {
+            return {
+                    value, (T) 0, (T) 0, (T) 0, // col 0
+                    (T) 0, value, (T) 0, (T) 0, // col 1
+                    (T) 0, (T) 0, value, (T) 0, // col 2
+                    (T) 0, (T) 0, (T) 0, value  // col 3
             };
         }
     };
 
 #pragma region TypeDef
 
-    typedef Matrix4x4<float> Float4x4;
+    typedef Matrix4x4<float>  Float4x4;
     typedef Matrix4x4<double> Double4x4;
-    typedef Matrix4x4<int> Int4x4;
+    typedef Matrix4x4<int>    Int4x4;
 
 #pragma endregion
 }

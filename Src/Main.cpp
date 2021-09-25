@@ -13,20 +13,15 @@
 #include <PlaneRenderObject.h>
 #include <SDFPlainMaterial.h>
 
+std::filesystem::path GetSkyBoxPath();
+std::filesystem::path GetSavePath();
+
 int main()
 {
     using namespace Bloop;
     using namespace CXUtils;
 
-    // == SETUP == //
-
-    const std::filesystem::path currentPath = std::filesystem::current_path();
-
-    auto skyboxPath = currentPath;
-
-    skyboxPath.append( "Vendor/Skybox.bmp" );
-
-    // == VARIABLES == //
+#pragma region Variables
 
     Stopwatch sw;
 
@@ -34,13 +29,13 @@ int main()
 
     bitmap_image resultImg( imgDimension.x, imgDimension.y );
 
-    bitmap_image skyboxImg( skyboxPath.string() );
+    //bitmap_image skyboxImg( GetSkyBoxPath().string() );
 
     RenderProfile profile( imgDimension );
 
     SDFSceneRenderer renderer( profile );
 
-    SDFScene scene( 100, 200, .0005f, .001f );
+    SDFScene scene( 200, 200, .0005f, .001f );
 
     Camera camera( Float3( 0, 1, 0 ), Float3( 0, 1, 0 ), Float3( 0, 0, 1 ).Normalized(), 50 );
 
@@ -63,6 +58,7 @@ int main()
 
     std::cout << "===Start Rendering===\n";
 
+#pragma endregion
 
 #pragma region Render
     sw.Start();
@@ -90,17 +86,21 @@ int main()
 
     std::cout << "Saving...\n";
 
-    auto resultImgPath = currentPath;
-
-    resultImgPath.append( "Result.bmp" );
-
-    const auto pathStr = currentPath.string();
+    const auto pathStr = GetSavePath().string();
 
     resultImg.save_image( pathStr );
 
-    std::cout << "Saved img to currentPath: " << pathStr << std::endl;
+    std::cout << "Saved img to path: " << pathStr << std::endl;
 
     std::system( pathStr.c_str() );
 
 #pragma endregion
+
 }
+
+std::filesystem::path GetSkyBoxPath()
+{ return std::filesystem::current_path().append( "Vendor\\Skybox.bmp" ); }
+
+std::filesystem::path GetSavePath()
+{ return std::filesystem::current_path().append( "Result.bmp" ); }
+
