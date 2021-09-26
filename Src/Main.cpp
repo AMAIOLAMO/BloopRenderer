@@ -5,6 +5,7 @@
 #include <Scene.h>
 #include <SphereRenderObject.h>
 #include <SDFSceneRenderer.h>
+#include <BMPCubeMap.h>
 
 #include <bitmap_image.hpp>
 #include <Stopwatch.h>
@@ -14,6 +15,7 @@
 #include <SDFPlainMaterial.h>
 
 std::filesystem::path GetSkyBoxPath();
+
 std::filesystem::path GetSavePath();
 
 int main()
@@ -29,11 +31,11 @@ int main()
 
     bitmap_image resultImg( imgDimension.x, imgDimension.y );
 
-    //bitmap_image skyboxImg( GetSkyBoxPath().string() );
-
     RenderProfile profile( imgDimension );
 
-    SDFSceneRenderer renderer( profile );
+    /*const BMPCubeMap cubeMap( bitmap_image( R"(C:\Users\alienware\Desktop\Cubemaps\SkyboxTest.bmp)" ), 10 );*/
+
+    SDFSceneRenderer renderer( profile/*, cubeMap*/ );
 
     SDFScene scene( 200, 200, .0005f, .001f );
 

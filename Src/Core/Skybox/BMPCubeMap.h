@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CubeMap.h"
+#include <CubeMap.h>
 #include <bitmap_image.hpp>
 
 namespace Bloop
@@ -9,8 +9,9 @@ namespace Bloop
     {
     public:
         BMPCubeMap( const bitmap_image& image, const size_t& side );
+        BMPCubeMap( const bitmap_image& image );
 
     public:
-        [[nodiscard]] Color8 Sample(const Float3& direction) const override;
+            [[nodiscard]] Color8 Sample( const Float3& direction ) const override;
     };
 }

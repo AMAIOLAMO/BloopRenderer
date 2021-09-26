@@ -3,9 +3,12 @@
 #include <RayCastInfo.h>
 #include <SDFMaterial.h>
 
+#include <BMPCubeMap.h>
+
 using namespace Bloop;
 
-SDFSceneRenderer::SDFSceneRenderer( const RenderProfile& renderProfile ) : SceneRenderer( renderProfile )
+SDFSceneRenderer::SDFSceneRenderer( const RenderProfile& renderProfile/*, const BMPCubeMap& cubeMap*/ ) :
+        SceneRenderer( renderProfile )/*, _cubeMap( cubeMap )*/
 { }
 
 Color8 SDFSceneRenderer::RenderFragment( const Camera& camera, const SDFScene& scene, const Float2& uv ) const
@@ -19,16 +22,16 @@ Color8 SDFSceneRenderer::RenderFragment( const Camera& camera, const SDFScene& s
             (uv.y - .5f) * 2.f * camera.fov,
             100.f ).Normalized();
 
-    /*const Float3 newViewDir = Float3(
-            (uv.x - .5f) * 2.f * aspectRatio * camera.fov,
-            (uv.y - .5f) * 2.f * camera.fov,
-            1.f ).Normalized();*/
-
     const Float3 newViewDir = uvToCamLocalMatrix.TransformDirection( newUV );
 
     const auto info = scene.RayCast( Ray( camera.position, newViewDir ) );
 
-    if ( info.DidntHit() ) return {0, 0, 0};
+    if ( info.DidntHit() )
+    {
+        return {0, 0, 0};
+
+        /*return _cubeMap.Sample( info.direction );*/
+    }
     //else hit
 
 #if 1
